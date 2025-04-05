@@ -593,6 +593,15 @@ class BaseSeleniumReader(BaseReader):
 
     def _init_webdriver(self) -> "uc.Chrome":
         """Start the Selenium driver."""
+        
+        from webdriver_manager.core.os_manager import OperationSystemManager, ChromeType
+        
+        # Retrieve the full browser version
+        os_manager = OperationSystemManager()
+        browser_version = os_manager.get_browser_version_from_os(ChromeType.GOOGLE)
+        version_main = int(browser_version.split('.')[0])
+
+        
         # Quit existing driver
         if hasattr(self, "_driver"):
             self._driver.quit()
@@ -617,7 +626,7 @@ class BaseSeleniumReader(BaseReader):
             resolver_rules = "MAP * ~NOTFOUND , EXCLUDE 127.0.0.1"
             chrome_options.add_argument("--proxy-server=" + proxy_str)
             chrome_options.add_argument("--host-resolver-rules=" + resolver_rules)
-        return uc.Chrome(options=chrome_options)
+        return uc.Chrome(options=chrome_options, version_main=version_main)
 
     def _download_and_save(
         self,

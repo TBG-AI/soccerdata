@@ -16,7 +16,7 @@ from selenium.common.exceptions import (
     NoSuchElementException,
 )
 from selenium.webdriver.common.by import By
-
+from datetime import datetime, timezone
 from ._common import BaseSeleniumReader, make_game_id, standardize_colnames
 from ._config import DATA_DIR, NOCACHE, NOSTORE, TEAMNAME_REPLACEMENTS, logger
 
@@ -701,6 +701,9 @@ class WhoScored(BaseSeleniumReader):
             filepath = self.data_dir / filemask.format(
                 game["league"], game["season"], game["game_id"]
             )
+            if game['date'] > datetime.now(timezone.utc):
+                logger.warning("Skipping game %s because it is in the future", game["game_id"])
+                continue
 
             try:
                 reader = self.get(
