@@ -96,6 +96,9 @@ else:
 
 # League dict
 LEAGUE_DICT = {
+    "EUR-Champions League": {
+        "WhoScored": "Europe - Champions League",
+    },
     "ENG-Premier League": {
         "ClubElo": "ENG_1",
         "MatchHistory": "E0",
