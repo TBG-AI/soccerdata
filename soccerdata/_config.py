@@ -95,9 +95,23 @@ else:
 
 
 # League dict
+# Where to find the league name in the WhoScored website
+# view-source:https://www.whoscored.com/
 LEAGUE_DICT = {
+    "USA-Major League Soccer": {
+        "WhoScored": "USA - Major League Soccer",
+    },
+    "INT-Nations League A": {
+        "WhoScored": "International - UEFA Nations League A",
+    },
+    "ESP-Copa del Rey": {
+        "WhoScored": "Spain - Copa del Rey",
+    },
     "EUR-Champions League": {
         "WhoScored": "Europe - Champions League",
+    },
+    "EUR-Europa League": {
+        "WhoScored": "Europe - Europa League",
     },
     "ENG-Premier League": {
         "ClubElo": "ENG_1",
