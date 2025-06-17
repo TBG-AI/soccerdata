@@ -98,6 +98,9 @@ else:
 # Where to find the league name in the WhoScored website
 # view-source:https://www.whoscored.com/
 LEAGUE_DICT = {
+    "INT-Club World Cup": {
+        "WhoScored": "International - FIFA Club World Cup",
+    },
     "USA-Major League Soccer": {
         "WhoScored": "USA - Major League Soccer",
     },
