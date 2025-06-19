@@ -100,6 +100,7 @@ else:
 LEAGUE_DICT = {
     "INT-Club World Cup": {
         "WhoScored": "International - FIFA Club World Cup",
+        "FBref": "FIFA Club World Cup",
     },
     "USA-Major League Soccer": {
         "WhoScored": "USA - Major League Soccer",
