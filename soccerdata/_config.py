@@ -98,6 +98,9 @@ else:
 # Where to find the league name in the WhoScored website
 # view-source:https://www.whoscored.com/
 LEAGUE_DICT = {
+    "SAU-Saudi Pro League": {
+        "FBref": "Saudi Professional League",
+    },
     "INT-Club World Cup": {
         "WhoScored": "International - FIFA Club World Cup",
         "FBref": "FIFA Club World Cup",
@@ -213,6 +216,7 @@ _f_custom_league_dict = CONFIG_DIR / "league_dict.json"
 if _f_custom_league_dict.is_file():
     with _f_custom_league_dict.open(encoding="utf8") as json_file:
         LEAGUE_DICT = {**LEAGUE_DICT, **json.load(json_file)}
+        logger.info(LEAGUE_DICT)
     logger.info("Custom league dict loaded from %s.", _f_custom_league_dict)
 else:
     logger.info(

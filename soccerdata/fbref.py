@@ -152,6 +152,7 @@ class FBref(BaseRequestsReader):
         url = f"{FBREF_API}/en/comps/"
         filepath = self.data_dir / "leagues.html"
         reader = self.get(url, filepath)
+        logger.info(url)
 
         # extract league links
         dfs = []
@@ -160,6 +161,7 @@ class FBref(BaseRequestsReader):
             df_table = _parse_table(html_table)
             df_table["url"] = html_table.xpath(".//th[@data-stat='league_name']/a/@href")
             dfs.append(df_table)
+        logger.info(dfs)
 
         df = (
             pd.concat(dfs)
@@ -179,6 +181,7 @@ class FBref(BaseRequestsReader):
                 (set(self.leagues) - {"Big 5 European Leagues Combined"})
                 | set(BIG_FIVE_DICT.values())
             )
+        logger.info(df)
         return df[df.index.isin(leagues)]
 
     def read_seasons(self, split_up_big5: bool = False) -> pd.DataFrame:
